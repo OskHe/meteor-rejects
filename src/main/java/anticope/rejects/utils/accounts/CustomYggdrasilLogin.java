@@ -31,7 +31,7 @@ import java.util.*;
 import static meteordevelopment.meteorclient.MeteorClient.mc;
 
 public class CustomYggdrasilLogin {
-    public static Environment localYggdrasilApi = new Environment("/api", "/sessionserver", "/minecraftservices", "Custom-Yggdrasil");
+    public static Environment localYggdrasilApi = new Environment( "/sessionserver", "/minecraftservices", "Custom-Yggdrasil");
 
     public static Session login(String name, String password, String server) throws AuthenticationException {
         try {
@@ -84,7 +84,7 @@ public class CustomYggdrasilLogin {
             return null;
         }
 
-        @Override
+        //@Override
         public Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> getTextures(final GameProfile profile, final boolean requireSecure) {
             final Property textureProperty = Iterables.getFirst(profile.getProperties().get("textures"), null);
 

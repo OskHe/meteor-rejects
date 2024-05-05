@@ -17,6 +17,7 @@ import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.chunk.WorldChunk;
 
 import java.util.Collections;
@@ -112,7 +113,8 @@ public class NewChunks extends Module {
 			synchronized (newChunks) {
 				for (ChunkPos c : newChunks) {
 					if (mc.getCameraEntity().getBlockPos().isWithinDistance(c.getStartPos(), 1024)) {
-						render(new Box(c.getStartPos(), c.getStartPos().add(16, renderHeight.get(), 16)), newChunksSideColor.get(), newChunksLineColor.get(), shapeMode.get(), event);
+						render(new Box(new Vec3d(c.getStartX(), -64, c.getStartZ()), new Vec3d(c.getStartX() + 16, -64 + renderHeight.get(), c.getStartZ() + 16)), newChunksSideColor.get(), newChunksLineColor.get(), shapeMode.get(), event);
+						//c.getStartPos().add(16, renderHeight.get(), 16)
 					}
 				}
 			}
@@ -122,7 +124,8 @@ public class NewChunks extends Module {
 			synchronized (oldChunks) {
 				for (ChunkPos c : oldChunks) {
 					if (mc.getCameraEntity().getBlockPos().isWithinDistance(c.getStartPos(), 1024)) {
-						render(new Box(c.getStartPos(), c.getStartPos().add(16, renderHeight.get(), 16)), oldChunksSideColor.get(), oldChunksLineColor.get(), shapeMode.get(), event);
+						//render(new Box(c.getStartPos(), c.getStartPos().add(16, renderHeight.get(), 16)), oldChunksSideColor.get(), oldChunksLineColor.get(), shapeMode.get(), event);
+						render(new Box(new Vec3d(c.getStartX(), -64, c.getStartZ()), new Vec3d(c.getStartX() + 16, -64 + renderHeight.get(), c.getStartZ() + 16)), newChunksSideColor.get(), newChunksLineColor.get(), shapeMode.get(), event);
 					}
 				}
 			}

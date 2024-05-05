@@ -25,8 +25,8 @@ public abstract class InventoryTweaksMixin implements IInventoryTweaks {
         this.callback = callback;
     }
 
-    @Inject(method = "lambda$new$1", at = @At("HEAD"))
+    /*@Inject(method = "lambda$new$1", at = @At("HEAD"))
     private void onStealChanged(Boolean b, CallbackInfo info) {
         callback = null;
-    }
+    }*/
 }
